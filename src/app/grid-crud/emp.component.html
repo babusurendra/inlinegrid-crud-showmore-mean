@@ -23,9 +23,9 @@
 
         </tbody>
     </table>
-</div>
-<div>{{statusMessage}}</div>
-
+    <input type="button" value="ExportToCSV" class="btn btn-default" (click)="exportToCsv()"/>
+<div>{{exportstausmsg}}</div><br>
+<input type="button" value="Load More.." class="btn btn-primary btn-lg btn-block" (click)="showmore()" [disabled]="disbaleshowmore"/>
 
 <!--The Html Template for Read-Only Rows-->
 <ng-template #readOnlyTemplate let-emp>

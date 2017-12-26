@@ -19,5 +19,4 @@ router.use('/auth', authRoutes);
 router.use('/posts', postRoutes);
 router.use('/EmployeeList/api/employees',emproutes)
 
-
 export default router;

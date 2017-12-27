@@ -23,53 +23,59 @@
 
         </tbody>
     </table>
-    <input type="button" value="ExportToCSV" class="btn btn-default" (click)="exportToCsv()"/>
-<div>{{exportstausmsg}}</div><br>
-<input type="button" value="Load More.." class="btn btn-primary btn-lg btn-block" (click)="showmore()" [disabled]="disbaleshowmore"/>
+    <input type="button" value="ExportToCSV" class="btn btn-default" (click)="exportToCsv()" />
+    <div>{{exportstausmsg}}</div>
+    <br>
+    <input type="button" value="Load More.." class="btn btn-primary btn-lg btn-block" (click)="showmore()" [disabled]="disbaleshowmore"
+    />
 
-<!--The Html Template for Read-Only Rows-->
-<ng-template #readOnlyTemplate let-emp>
-    <td>{{emp._id}}</td>
-    <td>{{emp.EmpNo}}</td>
-    <td>{{emp.EmpName}}</td>
-    <td>{{emp.Salary}}</td>
-    <td>{{emp.DeptName}}</td>
-    <td>{{emp.Designation}}</td>
-    <td>
-        <input type="button" value="Edit" class="btn btn-default" (click)="editEmployee(emp)" />
-    </td>
-    <td>
-        <input type="button" value="Delete" (click)="deleteEmp(emp)" class="btn btn-danger" />
-    </td>
-</ng-template>
-<!--Ends Here-->
+    <!--The Html Template for Read-Only Rows-->
+    <ng-template #readOnlyTemplate let-emp>
+        <td>{{emp._id}}</td>
+        <td>{{emp.EmpNo}}</td>
+        <td>{{emp.EmpName}}</td>
+        <td>{{emp.Salary}}</td>
+        <td>{{emp.DeptName}}</td>
+        <td>{{emp.Designation}}</td>
+        <td>
+            <input type="button" value="Edit" class="btn btn-default" (click)="editEmployee(emp)" />
+        </td>
+        <td>
+            <input type="button" value="Delete" (click)="deleteEmp(emp)" class="btn btn-danger" />
+        </td>
+    </ng-template>
+    <!--Ends Here-->
 
-<!--The Html Template for Editable Rows-->
-<ng-template #editTemplate>
-    <td>
-        <input type="text" [(ngModel)]="selemp._id" readonly disabled/>
-    </td>
-    <td>
-        <input type="text" [(ngModel)]="selemp.EmpNo" />
-    </td>
-    <td>
-        <input type="text" [(ngModel)]="selemp.EmpName" />
-    </td>
-    <td>
-        <input type="text" [(ngModel)]="selemp.Salary" />
-    </td>
-    <td>
-        <input type="text" [(ngModel)]="selemp.DeptName" />
-    </td>
-    <td>
-        <input type="text" [(ngModel)]="selemp.Designation" />
-    </td>
-    <td>
-        <input type="button" value="Save" (click)="saveEmp()" class="btn btn-success" />
-    </td>
-    <td>
-        <input type="button" value="Cancel" (click)="cancel()" class="btn btn-warning" />
-    </td>
+    <!--The Html Template for Editable Rows-->
+    <ng-template #editTemplate>
 
-</ng-template>
-<!--Ends Here-->
+        <td>
+            <input type="text" [(ngModel)]="selemp._id" readonly disabled/>
+        </td>
+
+        <td>
+            <input type="text" [(ngModel)]="selemp.EmpNo" required #EmpNo="ngModel" name="EmpNo" />
+            <div *ngIf="EmpNo.invalid && (EmpNo.dirty || EmpNo.touched)" class="alert alert-danger">Enter Valid Empno</div>
+        </td>
+        <td>
+            <input type="text" [(ngModel)]="selemp.EmpName" required #EmpName="ngModel" name="EmpName" />
+            <div *ngIf="EmpName.invalid && (EmpName.touched ||EmpName.dirty)" class="alert alert-danger">Employee Name should not be blank</div>
+        </td>
+        <td>
+            <input type="number" [(ngModel)]="selemp.Salary" required #Salary="ngModel" min="1000" max="10000" />
+            <div *ngIf="Salary.invalid&&(Salary.touched ||Salary.dirty)" class="alert alert-danger">Enter Valid amount and minimum should be 1000</div>
+        </td>
+        <td>
+            <input type="text" [(ngModel)]="selemp.DeptName" required #DeptName="ngModel" />
+        </td>
+        <td>
+            <input type="text" [(ngModel)]="selemp.Designation" required #Designation="ngModel" />
+        </td>
+        <td>
+            <input type="button" value="Save" (click)="saveEmp()" class="btn btn-success" />
+        </td>
+        <td>
+            <input type="button" value="Cancel" (click)="cancel()" class="btn btn-warning" />
+        </td>
+    </ng-template>
+    <!--Ends Here-->

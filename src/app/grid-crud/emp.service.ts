@@ -4,11 +4,11 @@ import { Http, Response, RequestOptions, Headers } from "@angular/http";
 import { Employee } from "./emp.model";
 import { Observable } from "rxjs/Observable";
 import "rxjs/Rx";
-import { CsvService } from "angular2-json2csv";
+//import { CsvService } from "angular2-json2csv";
 import { Angular2Csv } from "angular2-csv/Angular2-csv";
 import { setTimeout } from "timers";
-import * as json2csv from 'json2csv';
-import * as Papa from 'papaparse';
+//import * as json2csv from "json2csv";
+//import * as Papa from "papaparse";
 
 //2. The service class
 @Injectable()
@@ -16,7 +16,7 @@ export class EmployeeService {
   //3. The local private variable for  storing the URL of the REST API
   private servUrl = "http://localhost:4040/api/EmployeeList/api/employees";
   //4. Passsing the Http dependency to the constructor to access Http functions
-  constructor(private http: Http, private csvService: CsvService) {}
+  constructor(private http: Http) {}
   //private employees: Array<Employee>;
   //5. Function to return the Observable response containing all Employees
   getEmployees(): Observable<Response> {
@@ -43,13 +43,13 @@ export class EmployeeService {
     return this.http
       .get("http://localhost:4040/api/EmployeeList/api/employees/export")
       .map(resdata => {
-          console.log("Received JSON is"+ resdata.json());
-          
-           //var fields = ['field1', 'field2', 'field3'];
-           //var fields = ['field1', 'field2', 'field3'];
-           //      //res.json(employees);
-           // //    try {
-           //var result = json2csv({ data: resdata.json(), fields: fields });
+        console.log("Received JSON is" + resdata.json());
+
+        //var fields = ['field1', 'field2', 'field3'];
+        //var fields = ['field1', 'field2', 'field3'];
+        //      //res.json(employees);
+        // //    try {
+        //var result = json2csv({ data: resdata.json(), fields: fields });
         //   try {
         //     var result =  Papa.unparse(resdata);
         //     console.log("converted csv is"+result);
@@ -63,7 +63,7 @@ export class EmployeeService {
         // setTimeout(() => {
         //   console.log("resdata is"+resdata);
         //   this.csvService.download(resdata, "csvdata");
-          
+
         // }, 5000);
         //var data = JSON.stringify(res);
         // console.log("res data is" + res);
@@ -94,18 +94,18 @@ export class EmployeeService {
         // console.log("inbound data is"+inbound);
         // setTimeout(() =>{
         //     new Angular2Csv(inbound, "My Report");
-            // var options = {
-            //   fieldSeparator: ",",
-            //   quoteStrings: '"',
-            //   decimalseparator: ".",
-            //   showLabels: true,
-            //   showTitle: true,
-            //   useBom: true
-            // };
+        // var options = {
+        //   fieldSeparator: ",",
+        //   quoteStrings: '"',
+        //   decimalseparator: ".",
+        //   showLabels: true,
+        //   showTitle: true,
+        //   useBom: true
+        // };
         // },5000)
         //console.log("inbound data is" + inbound);
 
-        new Angular2Csv( resdata.json(), 'MyReport');
+        new Angular2Csv(resdata.json(), "MyReport");
 
         // Angular2Csv(data, filename, options);
         // Angular2Csv(res, "csvdata", options);

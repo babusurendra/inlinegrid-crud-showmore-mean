@@ -23,6 +23,8 @@ export class EmpComponent implements OnInit {
   initialArray: Array<Employee>;
   composed: any = [];
   disbaleshowmore: boolean = false;
+  dataOnCancel : Employee;
+  showId : boolean = false;
   //content:any[]=new Array();
   //intialArray :Array < Employee >;
 
@@ -42,7 +44,7 @@ export class EmpComponent implements OnInit {
   private loadEmployee() {
     this.serv.getEmployees().subscribe((resp: Response) => {
       this.initialArray = resp.json();
-      this.showmore();
+      if(this.count <= 0) this.showmore();
     });
   }
   //5. Add Employee
@@ -56,6 +58,7 @@ export class EmpComponent implements OnInit {
   //6. Edit Employee
   editEmployee(emp: Employee) {
     this.selemp = emp;
+    this.dataOnCancel= emp;
   }
   //7. Load either Read-Onoy Template or EditTemplate
   loadTemplate(emp: Employee) {
@@ -90,6 +93,7 @@ export class EmpComponent implements OnInit {
   //9. Cancel edit
   cancel() {
     this.selemp = null;
+    //this.selemp = this.dataOnCancel;
   }
   //10 Delete Employee
   deleteEmp(emp: Employee) {

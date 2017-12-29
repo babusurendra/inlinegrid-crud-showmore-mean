@@ -1,0 +1,12 @@
+﻿id,empno,empname,salary,department,deisgnation
+"5a425599544d5420b0935619","1","Surendra","1000","ENG","SWE",0
+"5a4255af544d5420b093561a","2","Babu","20000","ENG","SWE",0
+"5a4256b3544d5420b093561b","3","Raju","2000","QA","TEngineer",0
+"5a4256ce544d5420b093561c","4","Rao","4000","RA","Analyst",0
+"5a425717544d5420b093561d","5","Kiran","20000","ENG","SWE",0
+"5a425722544d5420b093561e","6","Mohan","20000","ENG","SWE",0
+"5a42573a544d5420b093561f","7","Hari","3000","DA","Analyst",0
+"5a42575e544d5420b0935620","8","John","50000","Markets","Analyst",0
+"5a425774544d5420b0935621","9","Andre","7000","Admin","lead",0
+"5a425783544d5420b0935622","10","Joseph","4000","Admin","lead",0
+"5a426146544d5420b0935623","11","Kun","4000","Admin","lead",0

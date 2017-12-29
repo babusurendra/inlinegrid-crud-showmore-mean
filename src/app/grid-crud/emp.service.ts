@@ -104,8 +104,11 @@ export class EmployeeService {
         // };
         // },5000)
         //console.log("inbound data is" + inbound);
+		var head = ['id', 'empno', 'empname','salary','department','deisgnation']
 
-        new Angular2Csv(resdata.json(), "MyReport");
+         //new Angular2Csv(array, 'mycsv', {headers: (head)});
+
+        new Angular2Csv(resdata.json(), "MyReport",{headers: (head)});
 
         // Angular2Csv(data, filename, options);
         // Angular2Csv(res, "csvdata", options);
